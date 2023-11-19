@@ -38,12 +38,14 @@ int main(void) {
 
     printf("출력되는 문장을 그대로 입력하세요.");
     time(&start_time); // 시작 시간 기록
+    
     for (int i = 0; i < num_texts; ++i) {
+        int k = 0;
         const char *text = texts[i];
-        cnt = 0;
         printf("\n%s\n",text);
         while ((nread = read(fd, &ch, 1)) > 0 && ch != '\n') {
-            if (ch == text[cnt++])
+            cnt++;
+            if (ch == text[k++])
                 write(fd, &ch, 1);
             else {
                 write(fd, "*", 1);

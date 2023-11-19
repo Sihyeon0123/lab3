@@ -91,15 +91,13 @@ int main() {
 
     if (answer == 'y' || answer == 'Y') {
         deleteFile(dirname, filename);
+        // 디렉토리 삭제 여부 물어보기
+        printf("\n디렉토리를 삭제하시겠습니까? (y/n): ");
+        scanf(" %c", &answer);
+
+        if (answer == 'y' || answer == 'Y') {
+            deleteDirectory(dirname);
+        }
     }
-
-    // 디렉토리 삭제 여부 물어보기
-    printf("\n디렉토리를 삭제하시겠습니까? (y/n): ");
-    scanf(" %c", &answer);
-
-    if (answer == 'y' || answer == 'Y') {
-        deleteDirectory(dirname);
-    }
-
     return 0;
 }

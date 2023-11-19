@@ -5,7 +5,7 @@
 #include <setjmp.h>
 
 void restart(int signo);
-void alarm_handler(int signum);
+void alarm_handler(int signo);
 void end(int signo);
 sigjmp_buf jbuf;
 int i = 0;
@@ -32,7 +32,7 @@ int main(){
 }
 
 void restart(int signo){
-    fprintf(stderr, "i가 0으로 초기화 됩니다.\n");
+    fprintf(stderr, "\ni가 0으로 초기화 됩니다.\n");
     siglongjmp(jbuf, 1); /* 저장된 곳으로 복귀 */
 }
 
@@ -41,7 +41,7 @@ void end(int signo) {
     exit(0);
 }
 
-void alarm_handler(int signum) {
+void alarm_handler(int signo) {
     i++;
     alarm(1); // 1초 후에 다시 시그널을 발생시키도록 설정
 }
